@@ -1,0 +1,693 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    font-family: 'Inter', sans-serif;
+}
+
+.main-content-view {
+    margin: 10px 10px 10px 10px;
+    padding-top: 45px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    border-radius: 10px;
+    box-sizing: border-box;
+    align-items: center;
+    background-color: black;
+}
+
+.mainnav {
+    border: none;
+    width: auto;
+    height: auto;
+    padding: 10px 15px;
+    border-radius: 30px;
+    color: rgb(210, 208, 208);
+    background-color: rgb(0, 0, 0);
+    font-size: medium;
+    font-weight: 600;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mainnav:hover {
+    border: 2px solid rgb(84, 84, 84);
+    color: black;
+    background-color: white;
+}
+
+.mainnav:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+.search {
+    margin: 0px 10px;
+    border-radius: 30px;
+}
+
+.searchbar {
+    border: none;
+    width: 300px;
+    border-radius: 30px;
+    padding: 8px 20px;
+    background-color: rgb(37, 37, 37);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.searchbar:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+    background-color: rgb(50, 50, 50);
+}
+
+.button {
+    width: auto;
+    height: auto;
+    background-color: rgb(61, 61, 61);
+    padding: 6px 20px;
+    border-radius: 30px;
+    margin-left: auto;
+    transition: all 0.3s ease;
+}
+
+.button a {
+    color: rgb(229, 227, 227);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background-color: rgb(80, 80, 80);
+}
+
+.button a:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+
+.binge-section {
+    padding: 20px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.section-header h3 {
+    color: white;
+    font-size: 24px;
+}
+
+.section-header .on-demand {
+    font-size: 14px;
+    color: #aaa;
+}
+
+.subheading {
+    color: rgb(195, 194, 194);
+    margin-bottom: 10px;
+}
+
+.cards-container {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.cards-container::-webkit-scrollbar {
+    display: none;
+}
+
+.cards-container.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    overflow-x: hidden;
+    padding-bottom: 0;
+}
+
+.card {
+    background-color: #1e1e1e00;
+    border-radius: 8px;
+    min-width: 180px;
+    max-width: 180px;
+    flex-shrink: 0;
+    text-align: left;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+    border: 3px solid white;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+
+.card h3 {
+    font-size: 14px;
+    margin: 0;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card p {
+    font-size: 14px;
+    color: #ccc;
+    margin: 4px 0 0;
+}
+
+.card.view-all {
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    max-width: 180px;
+    height: 270px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.view-all:hover {
+    border: 3px solid white;
+    background-color: #333;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.view-all-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease;
+}
+
+.card.view-all:hover .view-all-content {
+    transform: scale(1.05);
+}
+
+.grid-icon {
+    font-size: 28px;
+}
+
+#movie-detail-page {
+    display: none;
+    width: 100%;
+    min-height: calc(100vh - 45px);
+    padding-top: 45px;
+    background-color: black;
+    color: white;
+}
+
+#back-to-sections-button {
+    background-color: transparent;
+    border: 2px solid transparent;
+    color: rgb(210, 208, 208);
+    padding: 8px 15px;
+    border-radius: 30px;
+    font-size: medium;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#back-to-sections-button:hover {
+    background-color: rgba(210, 208, 208, 0.1);
+    border-color: rgb(210, 208, 208);
+    color: white;
+}
+
+#back-to-sections-button:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+
+.detail-page-header {
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-bottom: 1px solid #333;
+}
+
+.detail-content-area {
+    padding-bottom: 50px;
+}
+
+.movie-hero-section {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 50px;
+    box-sizing: border-box;
+    background-color: black;
+    background-image: none;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, rgba(0, 0, 0, 0.2) 100%);
+    z-index: 1;
+}
+
+.hero-decorative-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center right;
+    opacity: 0.2;
+    z-index: 0;
+    mask-image: linear-gradient(to left, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to left, black 70%, transparent 100%);
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    padding-bottom: 0;
+}
+
+.movie-poster-large {
+    width: 250px;
+    height: 375px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+}
+
+.movie-info-large {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    padding-bottom: 0;
+    flex-grow: 1;
+}
+
+.movie-info-large h1 {
+    font-size: 3em;
+    margin-bottom: 5px;
+    line-height: 1.1;
+}
+
+.director-info {
+    font-size: 0.95em;
+    color: #bbb;
+    margin-bottom: 8px;
+}
+
+.movie-meta-large {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8em;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.movie-meta-large span {
+    background-color: #333;
+    padding: 3px 7px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.movie-ratings-large {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.movie-ratings-large span {
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.movie-ratings-large .rating-icon {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75em;
+    color: #ccc;
+}
+
+.action-buttons-large {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.add-to-watchlist {
+    background-color: #e50914;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-watchlist:hover {
+    background-color: #ff0000;
+}
+
+.action-icon {
+    background-color: #333;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-icon:hover {
+    background-color: #555;
+}
+
+.action-icon:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+.movie-description-inline {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #ddd;
+    margin-top: 15px;
+    width: 100%;
+}
+
+
+.movie-description-full {
+    display: none;
+}
+
+.where-to-watch-section {
+    padding: 30px 50px;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.where-to-watch-section h4 {
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.where-to-watch-section p {
+    color: #aaa;
+    font-style: italic;
+    font-size: 1em;
+}
+
+.cast-section {
+    padding: 30px 50px;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.cast-section h4 {
+    font-size: 1.5em;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.cast-list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #555 #1a1a1a;
+}
+
+.cast-list::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cast-list::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 10px;
+}
+
+.cast-list::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+
+.cast-list::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+
+.cast-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100px;
+    flex-shrink: 0;
+}
+
+.cast-member img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 8px;
+    border: 3px solid #555;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.cast-member p {
+    font-size: 0.95em;
+    color: #ccc;
+    word-wrap: break-word;
+    white-space: normal;
+    line-height: 1.3;
+}
+
+@media (max-width: 1024px) {
+    .movie-hero-section {
+        height: 350px;
+        padding: 20px 30px;
+    }
+
+    .movie-info-large h1 {
+        font-size: 2.8em;
+    }
+
+    .movie-poster-large {
+        width: 180px;
+        height: 270px;
+    }
+
+    .hero-decorative-image {
+        width: 30%;
+    }
+
+    .where-to-watch-section,
+    .cast-section {
+        padding: 30px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .movie-hero-section {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        padding-bottom: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .movie-poster-large {
+        width: 150px;
+        height: 225px;
+        margin-bottom: 20px;
+    }
+
+    .movie-info-large h1 {
+        font-size: 2.5em;
+    }
+
+    .movie-meta-large,
+    .movie-ratings-large,
+    .action-buttons-large {
+        justify-content: center;
+    }
+
+    .movie-description-full,
+    .where-to-watch-section,
+    .cast-section {
+        padding: 20px 15px;
+    }
+
+    .cast-member {
+        width: 80px;
+    }
+
+    .cast-member img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .hero-decorative-image {
+        width: 40%;
+        height: 80%;
+        top: 10px;
+    }
+
+    .movie-description-inline {
+        font-size: 0.9em;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-hero-section {
+        padding-top: 30px;
+    }
+
+    .movie-info-large h1 {
+        font-size: 2em;
+    }
+
+    .director-info {
+        font-size: 1em;
+    }
+
+    .movie-meta-large span,
+    .movie-ratings-large span,
+    .rating-icon {
+        font-size: 0.9em;
+    }
+
+    .add-to-watchlist {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .action-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+
+    .movie-description-full p,
+    .where-to-watch-section p,
+    .cast-section p {
+        font-size: 0.9em;
+    }
+
+    .cast-member {
+        width: 60px;
+    }
+
+    .cast-member img {
+        width: 45px;
+        height: 45px;
+    }
+
+    .cast-section h4,
+    .where-to-watch-section h4 {
+        font-size: 1.3em;
+    }
+
+    .hero-decorative-image {
+        width: 50%;
+        height: 60%;
+    }
+}

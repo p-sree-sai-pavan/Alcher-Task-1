@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movies</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+      <nav class="navbar">
+        <div class="logo">
+          <a href=""><img src="PlexLogo.jpg" width="80px"  alt="plex" /></a>
+        </div>
+        <div class="search">
+          <input type="text" class="searchbar" placeholder="Search">
+        </div>
+        <button class="mainnav"><span>Home</span></button>
+        <button class="mainnav"><span>Live TV</span></button>
+        <button class="mainnav"><span>On Demand</span></button>
+        <button class="mainnav"><span>Discover</span></button>
+        <div class="button">
+          <a href=""><span>Sign In</span></a>
+        </div>
+      </nav>
+
+      <!-- This is my main home page area where all the movie sections live -->
+      <div id="home-page" class="main-content-view">
+        <section class="binge-section">
+          <div class="section-header">
+            <h3>Binge-Worthy Shows ></h3>
+          </div>
+          <div class="subheading">On Demand</div>
+          <div class="cards-container" id="binge-shows-container">
+            <!-- My movie cards will show up here, loaded by JavaScript -->
+          </div>   
+        </section>
+
+        <section class="binge-section">
+          <div class="section-header">
+            <h3>Most Popular in India ></h3>
+          </div>
+          <div class="subheading">On Demand</div>
+          <div class="cards-container" id="popular-india-container">
+            <!-- More movie cards loaded by JavaScript -->
+          </div>      
+        </section>
+
+        <section class="binge-section">
+          <div class="section-header">
+            <h3>Trending Now ></h3>
+          </div>
+          <div class="subheading">What's hot right now</div>
+          <div class="cards-container" id="trending-now-container">
+            <!-- Trending movies, dynamically loaded -->
+          </div>      
+        </section>
+
+        <section class="binge-section">
+          <div class="section-header">
+            <h3>New Releases ></h3>
+          </div>
+          <div class="subheading">Fresh from the oven</div>
+          <div class="cards-container" id="new-releases-container">
+            <!-- Latest movies, loaded by script.js -->
+          </div>      
+        </section>
+
+        <section class="binge-section">
+          <div class="section-header">
+            <h3>Critically Acclaimed ></h3>
+          </div>
+          <div class="subheading">Award-winning cinema</div>
+          <div class="cards-container" id="critically-acclaimed-container">
+            <!-- Movies that critics love, loaded by script.js -->
+          </div>      
+        </section>
+
+        <section class="binge-section">
+          <div class="section-header">
+            <h3>Action & Adventure ></h3>
+          </div>
+          <div class="subheading">Thrills and spills</div>
+          <div class="cards-container" id="action-adventure-container">
+            <!-- Get your adrenaline pumping with these, loaded by script.js -->
+          </div>      
+        </section>
+
+        <section class="binge-section">
+          <div class="section-header">
+            <h3>Comedies You'll Love ></h3>
+          </div>
+          <div class="subheading">Laugh out loud!</div>
+          <div class="cards-container" id="comedies-container">
+            <!-- Funny movies, loaded by script.js -->
+          </div>      
+        </section>
+
+        <section class="binge-section">
+          <div class="section-header">
+            <h3>Documentaries ></h3>
+          </div>
+          <div class="subheading">Explore the real world</div>
+          <div class="cards-container" id="documentaries-container">
+            <!-- Real-life stories, loaded by script.js -->
+          </div>      
+        </section>
+
+        <section class="binge-section">
+          <div class="section-header">
+            <h3>Sci-Fi & Fantasy ></h3>
+          </div>
+          <div class="subheading">Beyond your imagination</div>
+          <div class="cards-container" id="sci-fi-fantasy-container">
+            <!-- Out-of-this-world movies, loaded by script.js -->
+          </div>      
+        </section>
+
+        <section class="binge-section">
+          <div class="section-header">
+            <h3>Family Favorites ></h3>
+          </div>
+          <div class="subheading">Fun for everyone</div>
+          <div class="cards-container" id="family-favorites-container">
+            <!-- Movies for the whole family, loaded by script.js -->
+          </div>      
+        </section>
+
+      </div>
+
+      <!-- This is my Discover page, showing all movies in a big grid -->
+      <div id="discover-page" class="main-content-view" style="display: none;">
+        <section class="full-grid-section">
+          <div class="section-header">
+            <h3>Discover All Movies ></h3>
+          </div>
+          <div class="subheading">Explore our entire collection</div>
+          <div id="discover-movies-container" class="cards-container grid-view">
+            <!-- All movies will be loaded here in a grid by script.js -->
+          </div>
+        </section>
+      </div>
+
+      <!-- This is my Live TV page, showing all TV Shows in a grid -->
+      <div id="live-tv-page" class="main-content-view" style="display: none;">
+        <section class="full-grid-section">
+          <div class="section-header">
+            <h3>Live TV Shows ></h3>
+          </div>
+          <div class="subheading">Catch up on your favorite series</div>
+          <div id="live-tv-shows-container" class="cards-container grid-view">
+            <!-- All TV shows will be loaded here in a grid by script.js -->
+          </div>
+        </section>
+      </div>
+
+      <!-- This is my On Demand page, showing highest rated movies in a grid -->
+      <div id="on-demand-page" class="main-content-view" style="display: none;">
+        <section class="full-grid-section">
+          <div class="section-header">
+            <h3>On Demand: Top Rated Movies ></h3>
+          </div>
+          <div class="subheading">Curated for you</div>
+          <div id="on-demand-movies-container" class="cards-container grid-view">
+            <!-- Highest rated movies will be loaded here in a grid by script.js -->
+          </div>
+        </section>
+      </div>
+
+
+      <!-- This is the movie detail page, hidden until a movie is clicked -->
+      <section id="movie-detail-page" style="display: none;">
+        <div class="detail-page-header">
+          <button id="back-to-sections-button" class="mainnav"><span>← Back to Sections</span></button>
+        </div>
+        <div class="detail-content-area">
+            <!-- Movie details will be dynamically injected here by script.js -->
+        </div>
+      </section>
+
+    <!-- My main JavaScript file is linked here -->
+    <script src="script.js"></script>
+  </body>
+</html>
